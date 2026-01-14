@@ -1,0 +1,124 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --tag-green-bg: #D8FFC5;
+    --tag-green-text: #315620;     /* text-ui-tag-green-text */
+    --tag-green-border: #D8FFC5;   /* border-ui-tag-green-border */
+
+    --border-base: #D6D3D1;
+
+    --bg-field: #fff;
+    --bg-field-focus: #fff;
+    /* --bg-field-hover: #fff;
+    --bg-field-active: #fff;
+    --bg-field-disabled: #fff;
+    --bg-field-error: #fff;
+    --bg-field-success: #fff;
+    --bg-field-warning: #fff; */
+  }
+}
+
+@layer utilities {
+  body {
+    @apply text-grey-70;
+  }
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label {
+    @apply -translate-y-2 text-xsmall-regular;
+  }
+
+  input:focus ~ label {
+    @apply left-0;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid #212121;
+    -webkit-text-fill-color: #212121;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+@layer components {
+  .section-container + .section-container {
+    @apply pt-0;
+  }
+    
+  .content-container {
+    @apply max-w-296 w-full mx-auto px-6;
+  }
+
+  .text-xsmall-regular {
+    @apply text-[10px] leading-4 font-normal;
+  }
+
+  .txt-compact-small-plus {
+    @apply text-base font-bold leading-4;
+  }
+
+  /* Custom buttons */
+  .bg-ui-primary {
+    @apply bg-yellow-500;
+  }
+
+  .text-ui-primary {
+    @apply text-grey-60 font-bold;
+  }
+
+  .bg-ui-secondary {
+    @apply bg-orange-50;
+  }
+
+  .text-ui-secondary {
+    @apply text-white fill-white font-bold;
+  }
+
+  .bg-ui-outline {
+    @apply border border-grey-60;
+  }
+
+  .text-ui-outline {
+    @apply text-grey-60 font-bold;
+  }
+
+  /* Tags */
+  .bg-ui-tag-green-bg {
+    @apply bg-green-10 text-green-20;
+  }
+
+  .text-ui-tag-green-text {
+    @apply text-green-20;
+  }
+}

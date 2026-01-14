@@ -1,0 +1,22 @@
+# Automatic PR labeling based on title and branch name
+
+"type: feature":
+  - head-branch: ['^feat/', '^feature/', '^add/']
+
+"type: bug":
+  - head-branch: ['^fix/', '^bug/', '^bugfix/']
+
+"type: improvement":
+  - head-branch: ['^refactor/', '^improve/', '^update/']
+
+"type: docs":
+  - head-branch: ['^docs/', '^documentation/']
+
+dependencies:
+  - head-branch: ['^deps/', '^dependencies/']
+
+"type: chore":
+  - head-branch: ['^chore/']
+
+breaking:
+  - head-branch: ['^breaking/']

@@ -1,0 +1,35 @@
+const Radio = ({
+  checked,
+  "data-testid": dataTestId,
+  className,
+}: {
+  checked: boolean
+  "data-testid"?: string
+  className?: string
+}) => {
+  return (
+    <>
+      <button
+        type="button"
+        role="radio"
+        aria-checked="true"
+        data-state={checked ? "checked" : "unchecked"}
+        className={`group relative flex h-5 w-5 items-center justify-center outline-none ${className || ""}`}
+        data-testid={dataTestId || "radio-button"}
+      >
+        <div className="shadow-borders-base group-hover:shadow-borders-strong-with-shadow bg-ui-bg-base group-data-[state=checked]:bg-gray-900 group-data-[state=checked]:shadow-none group-focus:!shadow-borders-interactive-with-focus group-disabled:!bg-ui-bg-disabled group-disabled:!shadow-borders-base flex h-[14px] w-[14px] items-center justify-center rounded-full transition-all">
+          {checked && (
+            <span
+              data-state={checked ? "checked" : "unchecked"}
+              className="group flex items-center justify-center"
+            >
+              <div className="bg-white rounded-full group-disabled:bg-ui-fg-disabled group-disabled:shadow-none h-1.5 w-1.5"></div>
+            </span>
+          )}
+        </div>
+      </button>
+    </>
+  )
+}
+
+export default Radio

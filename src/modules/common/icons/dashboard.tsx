@@ -1,0 +1,12 @@
+import React from "react"
+import { IconProps } from "types/icon"
+
+const Dashboard: React.FC<IconProps> = ({
+  size = "16",
+  color = "currentColor",
+  ...attributes
+}) => (
+  <svg {...attributes} fill={color} height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m13.25 9v-5.5h7.25v5.5zm-9.75 3.5v-9h7.25v9zm9.75 8v-9h7.25v9zm-9.75 0v-5.5h7.25v5.5zm1.5-9.5h4.25v-6h-4.25zm9.75 8h4.25v-6h-4.25zm0-11.5h4.25v-2.5h-4.25zm-9.75 11.5h4.25v-2.5h-4.25z" /></svg>
+)
+
+export default Dashboard
