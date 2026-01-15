@@ -7,6 +7,24 @@ import createNextIntlPlugin from "next-intl/plugin"
 import createMDX from "@next/mdx"
 
 /**
+ * Parse additional remote patterns from environment variable
+ * Expects comma-separated hostnames, e.g. "cdn.example.com,images.example.com"
+ */
+const getAdditionalRemotePatterns = () => {
+  const envHostnames = process.env.NEXT_PUBLIC_IMAGE_REMOTE_HOSTNAMES
+  if (!envHostnames) return []
+
+  return envHostnames
+    .split(",")
+    .map((hostname) => hostname.trim())
+    .filter((hostname) => hostname.length > 0)
+    .map((hostname) => ({
+      protocol: (hostname.startsWith("localhost") ? "http" : "https") as "http" | "https",
+      hostname,
+    }))
+}
+
+/**
  * Base Next.js config
  */
 const nextConfig: NextConfig = {
@@ -36,6 +54,8 @@ const nextConfig: NextConfig = {
       //   hostname: "your-bucket.s3.region.amazonaws.com",
       // },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
+      // Add patterns from environment variable
+      ...getAdditionalRemotePatterns(),
     ],
   },
 }
