@@ -8,14 +8,14 @@
 # Clone and install
 git clone <repository-url>
 cd medusa-vending-storefront
-npm install
+yarn install
 
 # Configure
 cp .env.template .env.local
 # Edit .env.local with your values
 
 # Run
-npm run dev
+yarn dev
 ```
 
 Application will be available at `http://localhost:8000`

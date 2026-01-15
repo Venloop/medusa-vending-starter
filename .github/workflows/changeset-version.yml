@@ -23,7 +23,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --immutable
 
       - name: Configure Git for tag creation
         run: |
@@ -34,7 +34,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          version: npm run version
+          version: yarn version
           commit: "chore: version packages"
           title: "chore: version packages"
         env:

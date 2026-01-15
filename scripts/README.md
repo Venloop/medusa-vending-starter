@@ -2,10 +2,10 @@
 
 ## 🚀 Quick Start
 
-Instead of running `npm run changeset` and manually selecting version type, you can use:
+Instead of running `yarn changeset` and manually selecting version type, you can use:
 
 ```bash
-npm run changeset:auto
+yarn changeset:auto
 ```
 
 This script **automatically detects** the version type based on your branch name!
@@ -34,7 +34,7 @@ git add .
 git commit -m "feat: add dark mode support"
 
 # Auto-generate changeset (detects 'minor' from branch name)
-npm run changeset:auto
+yarn changeset:auto
 # Prompts: "Enter change description:"
 # You type: "Added dark mode theme support"
 
@@ -54,7 +54,7 @@ git checkout -b fix/validation-error
 git commit -m "fix: resolve validation error"
 
 # Auto-generate changeset (detects 'patch' from branch name)
-npm run changeset:auto
+yarn changeset:auto
 # You type: "Fixed validation error in login form"
 
 git add .changeset/
@@ -72,7 +72,7 @@ git checkout -b breaking/remove-old-api
 git commit -m "feat!: remove deprecated API endpoints"
 
 # Auto-generate changeset (detects 'major' from branch name)
-npm run changeset:auto
+yarn changeset:auto
 # You type: "BREAKING: Removed deprecated v1 API endpoints"
 
 git add .changeset/
@@ -84,7 +84,7 @@ git push
 
 ### Manual way (standard):
 ```bash
-npm run changeset
+yarn changeset
 # → Select package (medusa-next)
 # → Select version type (major/minor/patch)
 # → Enter description
@@ -92,7 +92,7 @@ npm run changeset
 
 ### Automatic way (smart):
 ```bash
-npm run changeset:auto
+yarn changeset:auto
 # → Detects version from branch name ✨
 # → Only asks for description
 ```
@@ -110,17 +110,17 @@ Expected patterns:
   breaking/* → major version
 
 Use standard changeset instead:
-  npm run changeset
+  yarn changeset
 ```
 
-In this case, just use the standard `npm run changeset` command.
+In this case, just use the standard `yarn changeset` command.
 
 ## 🎯 Best Practices
 
 1. **Always use conventional branch names** for automatic detection
 2. **Be descriptive** in your changeset description
 3. **One changeset per PR** is usually enough
-4. If unsure, use manual `npm run changeset` for more control
+4. If unsure, use manual `yarn changeset` for more control
 
 ## 🛠️ Technical Details
 
