@@ -23,7 +23,7 @@ git commit -m "feat: add new feature"
 ### 2. Add a changeset (BEFORE creating PR)
 
 ```bash
-npm run changeset
+yarn changeset
 ```
 
 This will prompt you to:
@@ -69,8 +69,8 @@ After your PR is merged to `main`:
 If you want to release manually without the automatic PR:
 
 ```bash
-npm run version  # Bump versions based on changesets
-npm run release  # Publish to npm (in this project only creates tag)
+yarn version  # Bump versions based on changesets
+yarn release  # Publish to npm (in this project only creates tag)
 ```
 
 ## Changeset files

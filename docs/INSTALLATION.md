@@ -3,7 +3,7 @@
 ## Requirements
 
 - **Node.js**: 18+ or 20+
-- **npm**: recommended (or yarn)
+- **yarn**: recommended package manager
 - **Medusa Backend**: v2 (running locally or remotely)
 - **Firebase Project**: optional (for FCM)
 
@@ -17,7 +17,7 @@ git clone <repository-url>
 cd medusa-vending-storefront
 
 # Install dependencies
-npm install
+yarn install
 ```
 
 ---
@@ -107,7 +107,7 @@ Common sources to add:
 
 ```bash
 # Port: 8000
-npm run dev
+yarn dev
 ```
 
 The application will be available at: `http://localhost:8000`
@@ -116,10 +116,10 @@ The application will be available at: `http://localhost:8000`
 
 ```bash
 # Build
-npm run build
+yarn build
 
 # Start
-npm run start
+yarn start
 ```
 
 ### Other Scripts

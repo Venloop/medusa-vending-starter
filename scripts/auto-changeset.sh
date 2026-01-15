@@ -15,7 +15,7 @@ elif [[ $BRANCH_NAME == breaking/* ]] || [[ $BRANCH_NAME == major/* ]]; then
   VERSION_TYPE="major"
 else
   echo "⚠️  Branch name doesn't match convention (feat/, fix/, breaking/)"
-  echo "Please use: npm run changeset"
+  echo "Please use: yarn changeset"
   exit 1
 fi
 

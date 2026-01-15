@@ -33,7 +33,7 @@ else
   echo "Current branch: ${BRANCH_NAME}"
   echo ""
   echo "Use standard changeset instead:"
-  echo "  npm run changeset"
+  echo "  yarn changeset"
   exit 1
 fi
 
