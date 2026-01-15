@@ -1,7 +1,6 @@
 {
   "name": "medusa-vending-next-starter",
   "version": "1.0.0",
-  "private": false,
   "author": "Codee <hello@iamcodee.co>",
   "description": "Next.js Starter to be used with Medusa v2 with additional features like POS",
   "keywords": [
@@ -76,5 +75,6 @@
     "tailwind-config-viewer": "^2.0.4",
     "tailwindcss": "^3.0.23",
     "typescript": "^5.3.2"
-  }
+  },
+  "packageManager": "yarn@4.12.0"
 }
