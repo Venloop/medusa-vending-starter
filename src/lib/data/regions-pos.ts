@@ -2,6 +2,7 @@
 
 import { sdk } from "@lib/config"
 import medusaError from "@lib/util/medusa-error"
+import { getCountryCodeForLocale } from "@lib/util/locale-to-country"
 import { HttpTypes } from "@medusajs/types"
 import { getCacheOptions } from "./cookies"
 
@@ -39,8 +40,11 @@ const regionMap = new Map<string, HttpTypes.StoreRegion>()
 
 export const getRegionVenloop = async (countryCode: string) => {
   try {
-    if (regionMap.has(countryCode)) {
-      return regionMap.get(countryCode)
+    // Convert locale to country code (e.g., 'en' -> 'gb')
+    const mappedCountryCode = getCountryCodeForLocale(countryCode)
+    
+    if (regionMap.has(mappedCountryCode)) {
+      return regionMap.get(mappedCountryCode)
     }
 
     const regions = await listRegionsVenloop()
@@ -55,8 +59,8 @@ export const getRegionVenloop = async (countryCode: string) => {
       })
     })
 
-    const region = countryCode
-      ? regionMap.get(countryCode)
+    const region = mappedCountryCode
+      ? regionMap.get(mappedCountryCode)
       : regionMap.get("us")
 
     return region

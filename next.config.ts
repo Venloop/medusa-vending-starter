@@ -63,7 +63,7 @@ const nextConfig: NextConfig = {
 /**
  * Plugins: next-intl + MDX (official @next/mdx)
  */
-const withNextIntl = createNextIntlPlugin()
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts")
 const withMDX = createMDX({
   options: {
     remarkPlugins: ["remark-gfm"],
