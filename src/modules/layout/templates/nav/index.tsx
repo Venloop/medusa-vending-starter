@@ -5,6 +5,7 @@ import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import { Logo } from "@modules/layout/components/logo"
 import IconCart from "@modules/common/icons/cart"
+import LanguageSwitcher from "@modules/layout/components/language-switcher"
 
 type NavProps = {
   disableCartDropdown?: boolean
@@ -59,6 +60,10 @@ export default async function Nav({
                 {t("account")}
               </LocalizedClientLink>
             </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
           </div>
 
           <div>

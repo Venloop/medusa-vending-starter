@@ -1,6 +1,7 @@
 import { getBaseURL } from "@lib/util/env"
 import { Metadata } from "next"
 import { Toaster } from "@medusajs/ui"
+import { routing } from "../i18n/routing"
 import "styles/globals.css"
 import { Jost, Poppins } from "next/font/google"
 import Script from "next/script"
@@ -33,10 +34,10 @@ interface Props {
 
 export default async function RootLayout({ children }: Props) {
   const headersList = await headers()
-  const countryCode = headersList.get("x-country-code") || "en"
+  const countryCode = headersList.get("x-country-code") || routing.defaultLocale
 
   return (
-    <html lang={countryCode} data-mode="light">
+    <html lang={countryCode} data-mode="light" className={`${jost.variable} ${poppins.variable}`}>
       <head>
         {process.env.NEXT_PUBLIC_CLARITY_ID ? (
           <Script

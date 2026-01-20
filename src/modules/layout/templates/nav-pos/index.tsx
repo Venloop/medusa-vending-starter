@@ -5,6 +5,7 @@ import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import { Logo } from "@modules/layout/components/logo"
 import IconCart from "@modules/common/icons/cart"
+import LanguageSwitcher from "@modules/layout/components/language-switcher"
 
 export default async function Nav() {
   const t = await getTranslations()
@@ -20,10 +21,7 @@ export default async function Nav() {
           </div>
 
           <div className="items-center h-full hidden small:flex">
-            <LocalizedClientLink
-              href="/"
-              data-testid="nav-store-link"
-            >
+            <LocalizedClientLink href="/" data-testid="nav-store-link">
               <Logo />
             </LocalizedClientLink>
           </div>
@@ -35,7 +33,7 @@ export default async function Nav() {
                 href="/store"
                 data-testid="nav-account-link"
               >
-                {t('buyOnline')}
+                {t("buyOnline")}
               </LocalizedClientLink>
             </div>
             <div className="hidden small:flex items-center gap-x-6 h-full">
@@ -44,7 +42,7 @@ export default async function Nav() {
                 href="/pos/locations"
                 data-testid="nav-account-link"
               >
-                {t('buyPos')}
+                {t("buyPos")}
               </LocalizedClientLink>
             </div>
             <div className="hidden small:flex items-center gap-x-6 h-full">
@@ -53,8 +51,11 @@ export default async function Nav() {
                 href="/account"
                 data-testid="nav-account-link"
               >
-                {t('account')}
+                {t("account")}
               </LocalizedClientLink>
+            </div>
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
             </div>
           </div>
         </nav>

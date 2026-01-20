@@ -1,9 +1,16 @@
 import { HttpTypes } from "@medusajs/types"
 import { NextRequest, NextResponse } from "next/server"
+import { 
+  getCountryCodeForLocale, 
+  SUPPORTED_LOCALES 
+} from "./lib/util/locale-to-country"
 
 const BACKEND_URL = process.env.MEDUSA_BACKEND_URL
 const PUBLISHABLE_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
 const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
+
+// Default locale for the application
+const DEFAULT_LOCALE = "pl"
 
 const regionMapCache = {
   regionMap: new Map<string, HttpTypes.StoreRegion>(),
@@ -78,16 +85,29 @@ async function getCountryCode(
       .get("x-vercel-ip-country")
       ?.toLowerCase()
 
-    const urlCountryCode = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
+    const urlFirstSegment = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
 
-    if (urlCountryCode && regionMap.has(urlCountryCode)) {
-      countryCode = urlCountryCode
+    // Check if the first segment is a supported locale (for next-intl)
+    if (urlFirstSegment && SUPPORTED_LOCALES.includes(urlFirstSegment)) {
+      // It's a locale, check if corresponding country exists in Medusa
+      const mappedCountryCode = getCountryCodeForLocale(urlFirstSegment)
+      if (mappedCountryCode && regionMap.has(mappedCountryCode)) {
+        // Use the locale as countryCode (for URL routing)
+        countryCode = urlFirstSegment
+      } else {
+        // Fallback if mapped country doesn't exist in regions
+        countryCode = urlFirstSegment
+      }
+    } else if (urlFirstSegment && regionMap.has(urlFirstSegment)) {
+      // It's a country code from Medusa regions
+      countryCode = urlFirstSegment
     } else if (vercelCountryCode && regionMap.has(vercelCountryCode)) {
       countryCode = vercelCountryCode
     } else if (regionMap.has(DEFAULT_REGION)) {
       countryCode = DEFAULT_REGION
-    } else if (regionMap.keys().next().value) {
-      countryCode = regionMap.keys().next().value
+    } else {
+      // Fallback to default locale
+      countryCode = DEFAULT_LOCALE
     }
 
     return countryCode
@@ -124,6 +144,7 @@ export async function middleware(request: NextRequest) {
     const nextResponse = NextResponse.next()
     if (countryCode) {
       nextResponse.headers.set('x-country-code', countryCode)
+      nextResponse.headers.set('x-pathname', request.nextUrl.pathname)
     }
     return nextResponse
   }
@@ -135,6 +156,7 @@ export async function middleware(request: NextRequest) {
     })
     if (countryCode) {
       response.headers.set('x-country-code', countryCode)
+      response.headers.set('x-pathname', request.nextUrl.pathname)
     }
     return response
   }
@@ -144,6 +166,7 @@ export async function middleware(request: NextRequest) {
     const nextResponse = NextResponse.next()
     if (countryCode) {
       nextResponse.headers.set('x-country-code', countryCode)
+      nextResponse.headers.set('x-pathname', request.nextUrl.pathname)
     }
     return nextResponse
   }
@@ -162,6 +185,7 @@ export async function middleware(request: NextRequest) {
   // Set country code header for the root layout
   if (countryCode) {
     response.headers.set('x-country-code', countryCode)
+    response.headers.set('x-pathname', request.nextUrl.pathname)
   }
 
   return response

@@ -5,6 +5,7 @@ import { getRegion, listRegions } from "@lib/data/regions"
 import ProductTemplate from "@modules/products/templates"
 import { retrieveStore } from "@lib/data/store"
 import { pageTitleSufix } from "@lib/constants"
+import { getLocaleForCountryCode } from "@lib/util/locale-to-country"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>
@@ -37,7 +38,7 @@ export async function generateStaticParams() {
     return countryProducts
       .flatMap((countryData) =>
         countryData.products.map((product) => ({
-          countryCode: countryData.country,
+          countryCode: getLocaleForCountryCode(countryData.country),
           handle: product.handle,
         }))
       )

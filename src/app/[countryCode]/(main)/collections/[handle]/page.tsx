@@ -7,6 +7,7 @@ import { StoreCollection, StoreRegion } from "@medusajs/types"
 import CollectionTemplate from "@modules/collections/templates"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { pageTitleSufix } from "@lib/constants"
+import { getLocaleForCountryCode } from "@lib/util/locale-to-country"
 
 type Props = {
   params: Promise<{ handle: string; countryCode: string }>
@@ -42,7 +43,7 @@ export async function generateStaticParams() {
   const staticParams = countryCodes
     ?.map((countryCode: string) =>
       collectionHandles.map((handle: string | undefined) => ({
-        countryCode,
+        countryCode: getLocaleForCountryCode(countryCode),
         handle,
       }))
     )
