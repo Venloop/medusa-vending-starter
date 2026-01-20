@@ -281,7 +281,8 @@
             "cityLabel": "Miasto",
             "provinceLabel": "Województwo",
             "phoneLabel": "Telefon",
-            "addAddress": "Dodaj adres"
+            "addAddress": "Dodaj adres",
+            "newAddress": "Nowy adres"
         },
         "Profile": {
             "nameLabel": "Imię i nazwisko",
@@ -362,7 +363,16 @@
     "Common": {
         "returnToHomepage": "Wróć do strony głównej",
         "variant": "Wariant",
-        "original": "Oryginalna"
+        "original": "Oryginalna",
+        "back": "Wróć",
+        "save": "Zapisz",
+        "cancel": "Anuluj",
+        "loadingStripe": "Ładowanie Stripe...",
+        "location": "Lokalizacja",
+        "debugMode": "Tryb debugowania",
+        "sessionDataFromFirestore": "Dane sesji z Firestore",
+        "cartDataFromFirestore": "Dane koszyka z Firestore",
+        "noDataOrLoading": "Brak danych lub trwa wczytywanie..."
     },
     "Contact": {
         "nameLabel": "Imię",
@@ -463,7 +473,12 @@
         "bancontact": "Bancontact",
         "paypal": "PayPal",
         "manualPayment": "Płatność ręczna",
-        "orderSummary": "Podsumowanie zamówienia"
+        "orderSummary": "Podsumowanie zamówienia",
+        "cartValue": "Wartość koszyka",
+        "discount": "Rabat",
+        "shippingCost": "Dostawa",
+        "tax": "Podatek",
+        "total": "Razem"
     },
     "Payments": {
         "addPaymentCard": "Dodaj kartę płatniczą",
@@ -479,7 +494,9 @@
         "cardDetached": "Karta została usunięta.",
         "errorDetachingCard": "Wystąpił błąd podczas usuwania karty.",
         "maxCardsReached": "Osiągnięto maksymalną liczbę kart (1). Usuń kartę, aby dodać nową.",
-        "stripeSecurityInfo": "Twoje dane karty są bezpiecznie przechowywane przez Stripe - globalnego dostawcę płatności. Nie mamy dostępu do numeru karty."
+        "stripeSecurityInfo": "Twoje dane karty są bezpiecznie przechowywane przez Stripe - globalnego dostawcę płatności. Nie mamy dostępu do numeru karty.",
+        "confirming": "Potwierdzanie…",
+        "confirmPayment3DS": "Potwierdź płatność (3DS)"
     },
     "PosLocations": {
         "openVenloop": "Otwórz urządzenie POS",
@@ -604,6 +621,20 @@
         "cardDeclinedInvalidCvc": "Karta została odrzucona. Nieprawidłowy CVV.",
         "cardDeclinedDefault": "Karta została odrzucona. Spróbuj ponownie lub skontaktuj się z obsługą."
     },
+    "ProductVariantInfo": {
+        "kcalPer100g": "kcal na 100g",
+        "deposit": "Kaucja",
+        "availability": "Dostępność",
+        "expiryDates": "Terminy",
+        "productDetails": "Szczegóły produktu"
+    },
+    "PosLocationDetail": {
+        "deviceContent": "Zawartość urządzenia POS"
+    },
+    "LocationInfo": {
+        "selectedLocation": "Wybrana lokalizacja",
+        "openDevice": "Otwórz urządzenie POS"
+    },
     "MetaData": {
         "homeTitle": "Twój sklep",
         "homeDescription": "Twój sklep",
@@ -635,6 +666,8 @@
         "orderConfirmedDescription": "Twoje zamówienie zostało potwierdzone.",
         "posLocationTitle": "Lokalizacja",
         "regulationsTitle": "Regulamin sklepu",
-        "regulationsDescription": "Regulamin sklepu"
+        "regulationsDescription": "Regulamin sklepu",
+        "orderDetailsTitle": "Zamówienie",
+        "orderDetailsDescription": "Przeglądaj swoje zamówienie"
     }
 }

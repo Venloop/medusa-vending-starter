@@ -1,9 +1,9 @@
 "use client"
 
 import { Button } from "@modules/common/components/button"
-import Link from "next/link"
 import IconArrow2Left from "@modules/common/icons/arrow-2-left"
 import { useTranslations } from "next-intl"
+import LocalizedClientLink from "../localized-client-link"
 
 interface Props {
   url?: string
@@ -15,10 +15,10 @@ const ReturnButton = ({ url, label }: Props) => {
 
   return (
     <Button variant="outline" asChild>
-      <Link href={url || "/"}>
+      <LocalizedClientLink href={url || "/"}>
         <IconArrow2Left className="w-4 h-4" />
         {label || t("returnToHomepage")}
-      </Link>
+      </LocalizedClientLink>
     </Button>
   )
 }

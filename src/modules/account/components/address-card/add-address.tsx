@@ -56,13 +56,13 @@ const AddAddress = ({
         onClick={open}
         data-testid="add-address-button"
       >
-        <span className="text-base">Nowy adres</span>
+        <span className="text-base">{t("Account.Address.newAddress")}</span>
         <Plus />
       </button>
 
       <Modal isOpen={state} close={close} data-testid="add-address-modal">
         <Modal.Title>
-          <Heading gendre="t4" className="text-grey-60 mb-8">{t("addAddress")}</Heading>
+          <Heading gendre="t4" className="text-grey-60 mb-8">{t("Account.Address.addAddress")}</Heading>
         </Modal.Title>
         <form action={formAction}>
           <Modal.Body>
@@ -155,9 +155,9 @@ const AddAddress = ({
                 onClick={close}
                 data-testid="cancel-button"
               >
-                Anuluj
+                {t("Common.cancel")}
               </Button>
-              <SubmitButton data-testid="save-button">Zapisz</SubmitButton>
+              <SubmitButton data-testid="save-button">{t("Common.save")}</SubmitButton>
             </div>
           </Modal.Footer>
         </form>

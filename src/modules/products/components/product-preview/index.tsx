@@ -11,6 +11,7 @@ import { Heading } from "@modules/common/components/heading"
 import { getSizeFromOptions } from "@lib/util/variants"
 import ProductPreviewActions from "../product-preview-actions"
 import { useMemo } from "react"
+import { useTranslations } from "next-intl"
 
 type ExtendedStoreProductVariant = HttpTypes.StoreProductVariant & {
   availability?: number
@@ -21,7 +22,8 @@ const getVariantOptions = (
   product: HttpTypes.StoreProduct,
   variant: ExtendedStoreProductVariant,
   cms_expiry_date?: any,
-  depositPrice?: any
+  depositPrice?: any,
+  t?: any
 ): { main: string[]; secondary: string[] } => {
   const main: string[] = []
   const secondary: string[] = []
@@ -31,7 +33,7 @@ const getVariantOptions = (
   const weight = getSizeFromOptions(variant?.options || [])
 
   if (kcal) {
-    main.push(`${kcal} kcal na 100g`)
+    main.push(`${kcal} ${t?.("ProductVariantInfo.kcalPer100g") || "kcal na 100g"}`)
   }
 
   if (portions) {
@@ -43,15 +45,15 @@ const getVariantOptions = (
   }
 
   if (depositPrice) {
-    secondary.push(`Kaucja: ${depositPrice?.calculated_price}`)
+    secondary.push(`${t?.("ProductVariantInfo.deposit") || "Kaucja"}: ${depositPrice?.calculated_price}`)
   }
 
   if (variant?.availability !== null && variant?.availability !== undefined) {
-    secondary.push(`Dostępność: ${variant?.availability}`)
+    secondary.push(`${t?.("ProductVariantInfo.availability") || "Dostępność"}: ${variant?.availability}`)
   }
 
   if (cms_expiry_date?.length) {
-    secondary.push(`Terminy: ${Object.values(cms_expiry_date).join(", ")}`)
+    secondary.push(`${t?.("ProductVariantInfo.expiryDates") || "Terminy"}: ${Object.values(cms_expiry_date).join(", ")}`)
   }
 
   return {
@@ -73,6 +75,7 @@ export default function ProductPreview({
   url?: string
   sales_channel_id: string
 }) {
+  const t = useTranslations()
   const getAvailableVariant = (variants: any[]) => {
     const inStockVariant = variants.find((v: any) => {
       if (!v.manage_inventory) return true
@@ -133,7 +136,8 @@ export default function ProductPreview({
                   product,
                   selectedVariant as ExtendedStoreProductVariant,
                   cms_expiry_date,
-                  depositPrice
+                  depositPrice,
+                  t
                 )
 
               return (

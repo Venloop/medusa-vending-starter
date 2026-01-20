@@ -6,6 +6,7 @@ import IconOnline from "@modules/common/icons/online"
 import Link from "next/link"
 import Section from "@modules/common/sections/section"
 import { getTranslations } from "next-intl/server"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const Hero = async () => {
   const t = await getTranslations("Home.hero")
@@ -28,17 +29,17 @@ const Hero = async () => {
 
           <div className="flex gap-2 md:mt-8 mt-4 justify-center md:justify-start">
             <Button asChild>
-              <Link href="/pl/store">
+              <LocalizedClientLink href="/store">
                 <IconCart className="md:w-6 md:h-6 w-4 h-4 shrink-0" />
                 {t("buyOnline")}
-              </Link>
+              </LocalizedClientLink>
             </Button>
 
             <Button variant="secondary" asChild>
-              <Link href="/pl/pos/locations">
+              <LocalizedClientLink href="/pos/locations">
                 <IconOnline className="md:w-6 md:h-6 w-4 h-4 shrink-0" />
                 {t("buyInStore")}
-              </Link>
+              </LocalizedClientLink>
             </Button>
           </div>
         </div>

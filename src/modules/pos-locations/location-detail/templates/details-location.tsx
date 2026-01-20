@@ -7,6 +7,7 @@ import { Heading } from "@modules/common/components/heading"
 import { Content } from "@modules/common/components/content"
 import { Button } from "@modules/common/components/button"
 import TextImage from "@modules/common/components/text-image"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const ImageBox = ({ src, alt }: { src: string; alt: string }) => {
   return (
@@ -25,16 +26,16 @@ const ContentBox = async ({ location }: { location: any }) => {
       </Content>
       <div className="grid grid-cols-2 gap-2 mt-4 sticky bottom-0 left-0 right-0 bg-white md:relative"> 
         <Button asChild className="w-full">
-          <Link href={`/pos/locations/${location?.id}/store/buy`}>
+          <LocalizedClientLink href={`/pos/locations/${location?.id}/store/buy`}>
             {t("openVenloop")}
             <IconArrowRight className="md:w-6 md:h-6 w-4 h-4" />
-          </Link>
+          </LocalizedClientLink>
         </Button> 
         <Button asChild className="w-full">
-          <Link href={`/pos/locations/${location?.id}/store/return`}>
+          <LocalizedClientLink href={`/pos/locations/${location?.id}/store/return`}>
             {t("returnPackaging")}
             <IconArrowRight className="md:w-6 md:h-6 w-4 h-4" />
-          </Link>
+          </LocalizedClientLink>
         </Button>      
       </div>
     </div>

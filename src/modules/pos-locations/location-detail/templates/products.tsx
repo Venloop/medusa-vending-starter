@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { Button } from "@medusajs/ui"
 import Link from "next/link"
+import { getTranslations } from "next-intl/server"
 
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import { SortOptions } from "@modules/pos-locations/components/refinement-list/sort-products"
@@ -43,6 +44,7 @@ const Products = async ({
   countryCode: string
   sales_channel_id: string
 }) => {
+  const t = await getTranslations()
   const queryParams: PaginatedProductsParams = {
     limit: 12,
   }
@@ -79,7 +81,7 @@ const Products = async ({
 
   return (
     <>
-      <Heading level="h3" gendre="t3" className="mb-12">Zawartość urządzenia POS</Heading>
+      <Heading level="h3" gendre="t3" className="mb-12">{t("PosLocationDetail.deviceContent")}</Heading>
       
       <ul
         className="grid grid-cols-2 w-full small:grid-cols-2 medium:grid-cols-4 gap-12 items-stretch"

@@ -9,6 +9,7 @@ import { Button } from "@modules/common/components/button"
 import Link from "next/link"
 import IconOnline from "@modules/common/icons/online"
 import Section from "@modules/common/sections/section"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const ImageBox = async () => {
   const t = await getTranslations("PosOffer.personalJar")
@@ -32,10 +33,10 @@ const ContentBox = async () => {
         </p>
       </Content>
       <Button variant="secondary" asChild className="md:mt-4 mt-4">
-        <Link href="/pl/pos/locations">
+        <LocalizedClientLink href="/pos/locations">
           <IconOnline className="w-6 h-6" />
           {t("buyInStore")}
-        </Link>
+        </LocalizedClientLink>
       </Button>      
     </div>
   )

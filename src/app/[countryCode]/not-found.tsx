@@ -1,8 +1,8 @@
 import { ArrowUpRightMini } from "@medusajs/icons"
 import { Text } from "@medusajs/ui"
 import { Metadata } from "next"
-import Link from "next/link"
 import { getTranslations } from "next-intl/server"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations()
@@ -22,7 +22,7 @@ export default async function NotFound() {
       <p className="text-small-regular text-ui-fg-base">
         {t("NotFoundText")}
       </p>
-      <Link
+      <LocalizedClientLink
         className="flex gap-x-1 items-center group"
         href="/"
       >
@@ -31,7 +31,7 @@ export default async function NotFound() {
           className="group-hover:rotate-45 ease-in-out duration-150"
           color="var(--fg-interactive)"
         />
-      </Link>
+      </LocalizedClientLink>
     </div>
   )
 }

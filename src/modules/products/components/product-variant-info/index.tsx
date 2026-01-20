@@ -4,6 +4,7 @@ import { Text } from "@medusajs/ui"
 import ProductVariantPrice from "@modules/products/components/product-variant-price"
 import ProductTags from "@modules/products/components/product-tags"
 import { getSizeFromOptions } from "@lib/util/variants"
+import { useTranslations } from "next-intl"
 
 // Extension of the StoreProductVariant type with the availability field
 type ExtendedStoreProductVariant = HttpTypes.StoreProductVariant & {
@@ -17,6 +18,7 @@ type ProductVariantInfo = {
 }
 
 const ProductVariantInfo = ({ product, variant }: ProductVariantInfo) => {
+  const t = useTranslations()
   const depositVariant = variant?.depositVariant
 
   const options = [] as string[]
@@ -29,7 +31,7 @@ const ProductVariantInfo = ({ product, variant }: ProductVariantInfo) => {
   const weight = getSizeFromOptions(variant?.options || [])
 
   if (kcal) {
-    options.push(`${kcal} kcal na 100g`)
+    options.push(`${kcal} ${t("ProductVariantInfo.kcalPer100g")}`)
   }
 
   if (portions) {
@@ -41,7 +43,7 @@ const ProductVariantInfo = ({ product, variant }: ProductVariantInfo) => {
   }
 
   if (variant?.availability) {
-    options.push(`Dostępność: ${variant?.availability}`)
+    options.push(`${t("ProductVariantInfo.availability")}: ${variant?.availability}`)
   }
 
   return (
