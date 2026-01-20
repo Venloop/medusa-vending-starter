@@ -8,6 +8,7 @@ import ProductTags from "../product-tags"
 import { Heading } from "@modules/common/components/heading"
 import { Button } from "@modules/common/components/button"
 import { getSizeFromOptions } from "@lib/util/variants"
+import { useTranslations } from "next-intl"
 
 type ExtendedStoreProductVariant = HttpTypes.StoreProductVariant & {
   availability?: number
@@ -17,7 +18,8 @@ type ExtendedStoreProductVariant = HttpTypes.StoreProductVariant & {
 const getVariantOptions = (
   variant: ExtendedStoreProductVariant,
   cms_expiry_date?: any,
-  depositPrice?: any
+  depositPrice?: any,
+  t?: any
 ): { main: string[]; secondary: string[] } => {
   const main: string[] = []
   const secondary: string[] = []
@@ -27,7 +29,7 @@ const getVariantOptions = (
   const weight = getSizeFromOptions(variant?.options || [])
 
   if (kcal) {
-    main.push(`${kcal} kcal na 100g`)
+    main.push(`${kcal} ${t?.("ProductVariantInfo.kcalPer100g") || "kcal na 100g"}`)
   }
 
   if (portions) {
@@ -39,15 +41,15 @@ const getVariantOptions = (
   }
 
   if (depositPrice) {
-    secondary.push(`Kaucja: ${depositPrice?.calculated_price}`)
+    secondary.push(`${t?.("ProductVariantInfo.deposit") || "Kaucja"}: ${depositPrice?.calculated_price}`)
   }
 
   if (variant?.availability !== null && variant?.availability !== undefined) {
-    secondary.push(`Dostępność: ${variant?.availability}`)
+    secondary.push(`${t?.("ProductVariantInfo.availability") || "Dostępność"}: ${variant?.availability}`)
   }
 
   if (cms_expiry_date?.length) {
-    secondary.push(`Terminy: ${Object.values(cms_expiry_date).join(", ")}`)
+    secondary.push(`${t?.("ProductVariantInfo.expiryDates") || "Terminy"}: ${Object.values(cms_expiry_date).join(", ")}`)
   }
 
   return {
@@ -67,6 +69,7 @@ export default function VariantPreview({
   product: HttpTypes.StoreProduct
   url?: string
 }) {
+  const t = useTranslations()
   const depositPrice = getPricesForVariant(variant?.depositVariant)
   const cheapestPrice = getPricesForVariant(variant)
 
@@ -76,7 +79,8 @@ export default function VariantPreview({
   const { main: mainOptions, secondary: secondaryOptions } = getVariantOptions(
     variant,
     cms_expiry_date,
-    depositPrice
+    depositPrice,
+    t
   )
 
   return (
@@ -119,7 +123,7 @@ export default function VariantPreview({
         </div>
       </div>
       <Button asChild className="mt-4 w-full">
-        <span>Szczegóły produktu</span>
+        <span>{t("ProductVariantInfo.productDetails")}</span>
       </Button>
     </LocalizedClientLink>
   )

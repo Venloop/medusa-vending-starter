@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { Button } from "@medusajs/ui"
 import Link from "next/link"
+import { getTranslations } from "next-intl/server"
 
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import { SortOptions } from "@modules/pos-locations/components/refinement-list/sort-products"
@@ -47,6 +48,7 @@ const Products = async ({
   countryCode: string
   sales_channel_id: string
 }) => {
+  const t = await getTranslations()
   const queryParams: PaginatedProductsParams = {
     limit: 12,
   }
@@ -85,7 +87,7 @@ const Products = async ({
   return (
     <div className="content-container py-6 relative" data-testid="location-details-container">
       <div className="mb-8 text-2xl-semi text-center">
-        <h1 data-testid="store-page-title leading-tight"><span className="text-gray-500 text-sm block">Lokalizacja</span><strong>{location.name}</strong></h1>
+        <h1 data-testid="store-page-title leading-tight"><span className="text-gray-500 text-sm block">{t("Common.location")}</span><strong>{location.name}</strong></h1>
       </div>
 
       {location?.metadata?.slider && (

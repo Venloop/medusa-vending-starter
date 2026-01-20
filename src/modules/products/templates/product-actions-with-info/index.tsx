@@ -156,7 +156,7 @@ export default function ProductActionsWithInfo({
     const weight = getSizeFromOptions(selectedVariant?.options || [])
 
     if (kcal) {
-      options.push(`${kcal} kcal na 100g`)
+      options.push(`${kcal} ${t("ProductVariantInfo.kcalPer100g")}`)
     }
 
     if (portions) {
@@ -168,11 +168,11 @@ export default function ProductActionsWithInfo({
     }
 
     if (selectedVariant?.inventory_quantity) {
-      options.push(`Dostępność: ${selectedVariant?.inventory_quantity}`)
+      options.push(`${t("ProductVariantInfo.availability")}: ${selectedVariant?.inventory_quantity}`)
     }
 
     return options
-  }, [selectedVariant])
+  }, [selectedVariant, t])
 
   return (
     <div className="flex flex-col gap-y-4">

@@ -3,28 +3,30 @@
 import { useFirebase } from "@lib/providers/firebase"
 import { retrieveCartVenloop } from "@lib/data/cart-pos"
 import { useEffect } from "react"
+import { useTranslations } from "next-intl"
 
 const FirebaseFirestoreWorker = ({ session_id }: { session_id: any }) => {
+  const t = useTranslations()
   const { sessionData, loading, error, cart } = useFirebase()
 
   return (
     <div className="p-4 border rounded bg-white shadow overflow-hidden">
-      <h1 className="text-lg font-semibold mb-2">Debug mode</h1>
-      <h2 className="text-base font-semibold mb-2">Dane sesjis z Firestore:</h2>
+      <h1 className="text-lg font-semibold mb-2">{t("Common.debugMode")}</h1>
+      <h2 className="text-base font-semibold mb-2">{t("Common.sessionDataFromFirestore")}:</h2>
       {sessionData ? (
         <pre className="text-sm bg-gray-100 p-2 rounded">
           {JSON.stringify(sessionData, null, 2)}
         </pre>
       ) : (
-        <p className="text-gray-500">Brak danych lub trwa wczytywanie...</p>
+        <p className="text-gray-500">{t("Common.noDataOrLoading")}</p>
       )}
-      <h2 className="text-base font-semibold mt-4 mb-2">Dane koszyka z Firestore:</h2>
+      <h2 className="text-base font-semibold mt-4 mb-2">{t("Common.cartDataFromFirestore")}:</h2>
       {cart ? (
         <pre className="text-sm bg-gray-100 p-2 rounded">
           {JSON.stringify(cart, null, 2)}
         </pre>
       ) : (
-        <p className="text-gray-500">Brak danych lub trwa wczytywanie...</p>
+        <p className="text-gray-500">{t("Common.noDataOrLoading")}</p>
       )}
     </div>
   )

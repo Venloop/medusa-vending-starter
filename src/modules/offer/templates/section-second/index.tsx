@@ -10,6 +10,7 @@ import IconCart from "@modules/common/icons/cart"
 import { ContentList } from "@modules/common/components/content-list"
 import Section from "@modules/common/sections/section"
 import { getTranslations } from "next-intl/server"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const ImageBox = async () => {
   const t = await getTranslations("Offer.prepared")
@@ -39,10 +40,10 @@ const ContentBox = async () => {
         }
       ]} />
       <Button variant="secondary" asChild className="mt-8">
-        <Link href="/pl/store">
+        <LocalizedClientLink href="/store">
           <IconCart className="w-6 h-6" />
           {t("buyOnline")}
-        </Link>
+        </LocalizedClientLink>
       </Button>      
     </div>
   )

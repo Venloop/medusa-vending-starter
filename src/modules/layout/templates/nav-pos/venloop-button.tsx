@@ -1,10 +1,12 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import Link from 'next/link'
 import { Button } from '@medusajs/ui'
+import LocalizedClientLink from '@modules/common/components/localized-client-link'
+import { useTranslations } from 'next-intl'
 
 export default function PosDeviceButton() {
+  const t = useTranslations()
   const params = useParams()
   const handle = params.handle as string | undefined
 
@@ -12,9 +14,9 @@ export default function PosDeviceButton() {
     <>
       {handle && (
         <div className="flex flex-col space-y-4 items-center">
-          <Link href={`/pos/locations/${handle}/store/buy`}>
-            <Button variant="primary" size="small" className="w-full">Otwórz urządzenie POS</Button>
-          </Link>
+          <LocalizedClientLink href={`/pos/locations/${handle}/store/buy`}>
+            <Button variant="primary" size="small" className="w-full">{t("LocationInfo.openDevice")}</Button>
+          </LocalizedClientLink>
         </div>        
       )}
     </>

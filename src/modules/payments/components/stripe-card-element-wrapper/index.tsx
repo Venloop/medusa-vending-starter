@@ -4,6 +4,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { StripeCardElementOptions } from "@stripe/stripe-js"
 
 import React, { useContext, useMemo, type JSX, useState, useEffect } from "react"
+import { useTranslations } from "next-intl"
 
 type StripeCardElementWrapperProps = {
   onReady?: (event: any) => void
@@ -26,13 +27,14 @@ const StripeCardElementWrapper: React.FC<StripeCardElementWrapperProps> = ({
   setError,
   setCardComplete,
 }) => {
+  const t = useTranslations()
   const stripe = useStripe()
   const elements = useElements()
 
   if (!stripe || !elements) {
     return (
       <div className="p-4 border border-gray-300 rounded-md bg-gray-50">
-        <p className="text-gray-500">Ładowanie Stripe...</p>
+        <p className="text-gray-500">{t("Common.loadingStripe")}</p>
       </div>
     )
   }

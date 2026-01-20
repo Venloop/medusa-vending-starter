@@ -2,6 +2,7 @@
 
 import { HttpTypes } from "@medusajs/types"
 import { Text } from "@medusajs/ui"
+import { useTranslations } from "next-intl"
 
 type LineItemOptionsProps = {
   variant: HttpTypes.StoreProductVariant | undefined
@@ -14,6 +15,8 @@ const LineItemOptions = ({
   "data-testid": dataTestid,
   "data-value": dataValue,
 }: LineItemOptionsProps) => {
+  const t = useTranslations()
+  
   if (!variant) return null
 
   const main: string[] = []
@@ -27,7 +30,7 @@ const LineItemOptions = ({
   }
 
   if (kcal) {
-    main.push(`${kcal} kcal na 100g`)
+    main.push(`${kcal} ${t("ProductVariantInfo.kcalPer100g")}`)
   }
 
   if (portions) {

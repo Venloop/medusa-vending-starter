@@ -1,6 +1,7 @@
 "use client"
 import { useConfirm3DS } from "./useConfirm3Ds"
 import { Button } from "@medusajs/ui"
+import { useTranslations } from "next-intl"
 
 export function Confirm3DSButton({
   clientSecret,
@@ -11,6 +12,7 @@ export function Confirm3DSButton({
   onSuccess?: (pi: any) => void
   onAbort?: (err: any) => void
 }) {
+  const t = useTranslations()
   const { state, run } = useConfirm3DS(clientSecret, { onSuccess, onAbort })
   return (
     <div data-3ds-state={state}>
@@ -20,7 +22,7 @@ export function Confirm3DSButton({
         size="large"
         className="w-full text-sm"
       >
-        {state === "processing" ? "Potwierdzanie…" : "Potwierdź płatność (3DS)"}
+        {state === "processing" ? t("Payments.confirming") : t("Payments.confirmPayment3DS")}
       </Button>
     </div>
   )

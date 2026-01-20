@@ -7,6 +7,7 @@ import Link from "next/link"
 import Box from "./box"
 import Section from "@modules/common/sections/section"
 import { getTranslations } from "next-intl/server"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const GridOne = async () => {
   const t = await getTranslations("Home.gridOne")
@@ -33,10 +34,10 @@ const GridOne = async () => {
           </Content>
           <div className="md:mt-8 mt-4">
             <Button variant="secondary" asChild>
-              <Link href="/pl/offer">
+              <LocalizedClientLink href="/offer">
                 {t("familyJar.button")}
                 <IconArrowRight className="w-4 h-4" />
-              </Link>
+              </LocalizedClientLink>
             </Button>
           </div>
         </Box>
@@ -53,10 +54,10 @@ const GridOne = async () => {
           </Content>
           <div className="mt-8">
             <Button asChild>
-              <Link href="/pl/pos/offer">
+              <LocalizedClientLink href="/pos/offer">
                 {t("personalJar.button")}
                 <IconArrowRight className="w-4 h-4" />
-              </Link>
+              </LocalizedClientLink>
             </Button>
           </div>
         </Box>

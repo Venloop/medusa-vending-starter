@@ -1,8 +1,40 @@
 {
+    "title": "Your store",
+    "shippingTo:": "Shipping to:",
+    "home": "Home",
+    "locations": "Locations",
+    "about": "About us",
+    "contact": "Contact",
+    "cart": "Cart",
+    "myCart": "My cart",
+    "removeAll": "Remove all",
+    "store": "Store",
+    "offer": "Offer",
+    "buyOnline": "Buy online",
+    "buyPos": "Buy in store",
+    "faq": "FAQ",
+    "kontakt": "Contact",
+    "checkout": "Checkout",
+    "account": "My account",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Log out",
     "GoToCheckout": "Go to checkout",
+    "Summary": "Summary",
+    "Promotion(s) applied:": "Promotion(s) applied:",
+    "Remove discount code from order": "Remove discount code from order",
+    "Remove bundle": "Remove bundle",
     "HomePage": {
-        "title": "Your store",
-        "about": "Go to the about page"
+        "title": "Your store"
+    },
+    "Locations": {
+        "title": "Locations"
+    },
+    "FaqPage": {
+        "title": "FAQ"
+    },
+    "ContactPage": {
+        "title": "Contact"
     },
     "AllProducts": "All products",
     "ProductList": "Product List",
@@ -18,8 +50,7 @@
     "Join": "Join",
     "AlreadyMember": "Already a member?",
     "Cart": "Cart",
-    "myCart": "My cart",
-    "removeAll": "Remove all",
+    "View your cart": "View your cart",
     "CartEmpty": "You don't have anything in your cart. Let's change that, use the link below to start browsing our products.",
     "ExploreProducts": "Explore products",
     "PlaceOrder": "Place order",
@@ -138,6 +169,10 @@
     "ResetPassword": "Reset password",
     "ResetPasswordDescription": "Enter your email to reset your password.",
     "ResetPasswordButton": "Reset password",
+    "UpdatePassword": "Update password",
+    "UpdatePasswordDescription": "Enter your new password.",
+    "ProductSelectionWelcomeMessage": "Select products one by one. They will appear in the panel below. Close the device to complete the transaction.",
+    "Regulations": "Terms and Conditions",
     "NotFoundTitle": "404",
     "NotFoundDescription": "Something went wrong",
     "NotFoundHeading": "Page not found",
@@ -178,7 +213,7 @@
             "step3Description": "When everything is in place, simply close the door. The system will automatically end the return session and we'll send your deposit to the card linked to your account. Thank you for giving jars a second life"
         }
     },
-    "FaqPage": {
+    "FaqPageQuestions": {
         "question1": "Can I order a pack of products?",
         "answer1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "question2": "How to place an order?",
@@ -246,7 +281,8 @@
             "cityLabel": "City",
             "provinceLabel": "Province",
             "phoneLabel": "Phone",
-            "addAddress": "Add address"
+            "addAddress": "Add address",
+            "newAddress": "New address"
         },
         "Profile": {
             "nameLabel": "First and last name",
@@ -327,7 +363,16 @@
     "Common": {
         "returnToHomepage": "Return to homepage",
         "variant": "Variant",
-        "original": "Original"
+        "original": "Original",
+        "back": "Back",
+        "save": "Save",
+        "cancel": "Cancel",
+        "loadingStripe": "Loading Stripe...",
+        "location": "Location",
+        "debugMode": "Debug mode",
+        "sessionDataFromFirestore": "Session data from Firestore",
+        "cartDataFromFirestore": "Cart data from Firestore",
+        "noDataOrLoading": "No data or loading..."
     },
     "Contact": {
         "nameLabel": "Name",
@@ -428,7 +473,12 @@
         "bancontact": "Bancontact",
         "paypal": "PayPal",
         "manualPayment": "Manual Payment",
-        "orderSummary": "Order summary"
+        "orderSummary": "Order summary",
+        "cartValue": "Cart value",
+        "discount": "Discount",
+        "shippingCost": "Shipping",
+        "tax": "Tax",
+        "total": "Total"
     },
     "Payments": {
         "addPaymentCard": "Add payment card",
@@ -444,7 +494,9 @@
         "cardDetached": "Card has been detached.",
         "errorDetachingCard": "An error occurred while detaching the card.",
         "maxCardsReached": "Maximum number of cards (1) reached. Please remove a card to add a new one.",
-        "stripeSecurityInfo": "Your card details are securely stored by Stripe — a global payment provider. We do not have access to your card number."
+        "stripeSecurityInfo": "Your card details are securely stored by Stripe — a global payment provider. We do not have access to your card number.",
+        "confirming": "Confirming…",
+        "confirmPayment3DS": "Confirm payment (3DS)"
     },
     "PosLocations": {
         "openVenloop": "Open POS Device",
@@ -569,9 +621,23 @@
         "cardDeclinedInvalidCvc": "Card declined. Invalid CVV.",
         "cardDeclinedDefault": "Card declined. Please try again or contact support."
     },
+    "ProductVariantInfo": {
+        "kcalPer100g": "kcal per 100g",
+        "deposit": "Deposit",
+        "availability": "Availability",
+        "expiryDates": "Expiry dates",
+        "productDetails": "Product details"
+    },
+    "PosLocationDetail": {
+        "deviceContent": "Device content"
+    },
+    "LocationInfo": {
+        "selectedLocation": "Selected location",
+        "openDevice": "Open POS Device"
+    },
     "MetaData": {
-        "homeTitle": "Emergency Jar",
-        "homeDescription": "Emergency Jar",
+        "homeTitle": "Your Store",
+        "homeDescription": "Your Store",
         "contactTitle": "Contact",
         "contactDescription": "Contact",
         "faqTitle": "FAQ",
@@ -600,6 +666,8 @@
         "orderConfirmedDescription": "Your order has been confirmed.",
         "posLocationTitle": "Location",
         "regulationsTitle": "Terms and Conditions",
-        "regulationsDescription": "Terms and Conditions"
+        "regulationsDescription": "Terms and Conditions",
+        "orderDetailsTitle": "Order",
+        "orderDetailsDescription": "View your order"
     }
 }
